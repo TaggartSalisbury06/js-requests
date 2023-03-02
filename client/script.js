@@ -196,14 +196,11 @@ document.getElementById('query-button').addEventListener('click', getQuery)
 */
 
 // CODE HERE 
-let foodInput = document.querySelector('input')
-function clearFood(){
-    foodInput.value.textContent = ''
-}
+
 
 function createFood(e) {
     e.preventDefault()
-    // let foodInput = document.querySelector('input')
+    let foodInput = document.querySelector('input')
 
     const body = {
         newFood: foodInput.value
@@ -212,8 +209,7 @@ function createFood(e) {
     axios.post(`${baseURL}/food`, body).then(res => {
         console.log(res.data)
         document.getElementById('form-p').textContent = res.data
-        document.getElementById('form-p').display = 'block'
     }).catch((err) => console.log({err, message: 'cannot run function'}))
 }
 
-document.getElementById('food-btn').addEventListener('click', createFood,)
+document.getElementById('food-btn').addEventListener('click', createFood)
